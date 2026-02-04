@@ -5,23 +5,23 @@ import type { Article } from '../core/models/Article';
 import styles from './DetailPage.module.css';
 
 const DetailPage = () => {
-    // 1. Recupero del parametro dinamico dall'URL (Requisito Avanzato)
+    //Recupero del parametro dinamico dall'URL
     const { title } = useParams<{ title: string }>();
     const navigate = useNavigate();
 
-    // 2. Recupero dati (In un'app reale useresti un ID, qui cerchiamo per titolo nei dati in cache)
+    //Recupero dati
     const { data, isLoading } = useQuery({
         queryKey: ['topNews'],
         queryFn: fetchTopNews,
         staleTime: 1000 * 60 * 5, // Mantiene i dati validi per 5 minuti
     });
 
-    // Trova l'articolo specifico basandosi sul titolo nell'URL
+    // Ricerca articolo specifico
     const article = data?.articles.find((a: Article) => a.title === title);
 
     if (isLoading) return <div className="container"><p className={styles.loading}>Caricamento...</p></div>;
 
-    // 3. Gestione pagina non trovata (Se l'articolo non esiste)
+    //Gestione pagina non trovata
     if (!article) {
         return (
             <div className="container">

@@ -25,7 +25,7 @@ const HomePage = () => {
         setActiveSearch('');
     };
 
-    // 2. Gestione dello stato di caricamento (UI/UX)
+    //Gestione dello stato di caricamento
     if (isLoading) {
         return (
             <div className="container">
@@ -34,7 +34,7 @@ const HomePage = () => {
         );
     }
 
-    // 3. Gestione degli errori (Requisito Avanzato)
+    //Gestione degli errori
     if (isError) {
         return (
             <div className="container error-message">
@@ -50,7 +50,7 @@ const HomePage = () => {
                 <h1 className={styles.title}>NewsWave - Ultime Notizie</h1>
                 <p className={styles.subtitle}>Resta aggiornato con i fatti dal mondo in tempo reale.</p>
 
-                {/* Form di ricerca */}
+                /* Form di ricerca */
                 <form onSubmit={handleSearch} className={styles.searchForm}>
                     <input
                         type="text"
@@ -84,7 +84,7 @@ const HomePage = () => {
                 )}
             </header>
 
-            {/* 4. Mapping dei dati e utilizzo di componenti riutilizzabili */}
+
             <section className={styles.newsGrid}>
                 {data?.articles.length ? (
                     data.articles.map((article: Article, index: number) => (

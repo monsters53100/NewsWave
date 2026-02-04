@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
-/**
- * Componente Navbar riutilizzabile.
- * Fornisce i link principali per la navigazione della SPA.
- */
+//navbar component
 const Navbar = () => {
     return (
         <nav className={styles.nav}>

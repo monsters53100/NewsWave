@@ -49,16 +49,15 @@ import LoginPage from "./pages/LoginPage.tsx";
                 boxSizing: 'border-box'
                 }}>
                     <Routes>
-                        {/* Rotta Base (Minimi) */}
+
                         <Route path="/" element={<HomePage />} />
 
-                        {/* Rotta con parametro dinamico (Avanzati) */}
                         <Route path="/news/:title" element={<DetailPage />} />
 
-                        {/* Rotta per la chiamata POST (Obbligatoria) */}
+
                         {<Route path="/login" element={<LoginPage />} />}
 
-                        {/* Rotta Catch-all per pagina 404 (Avanzati) */}
+
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </div>
