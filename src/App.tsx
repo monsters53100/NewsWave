@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react'
+// import PageNotFound from "./component/PageNotFound.tsx";
+// import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './component/NavBar';
 
-function App() {
-  const [count, setCount] = useState(0)
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from "./pages/LoginPage.tsx";
+
+// function App() {
+  // const [count, setCount] = useState(0)
+  //
+  // return (
+  //   <>
+  //     <BrowserRouter>
+  //         <nav>
+  //             <Link to='/home'>Home</Link>
+  //               <Link to='/dashboard'>Dashboard</Link>
+  //               <Link to='/login'>Login</Link>
+  //             <Link to='/Articoli'>Articoli</Link>
+  //         </nav>
+  //
+  //         <Routes>
+  //             <Route path='/home' element={<h1>Home</h1>}/>
+  //             <Route path='/dashboard' element={<h1>Dashboard</h1>}/>
+  //             <Route path='/login' element={<h1>Login</h1>}/>
+  //             <Route path='/Articoli' element={<h1>Articoli</h1>}/>
+  //             <Route path='*' element={<PageNotFound/>}/>
+  //         </Routes>
+  //     </BrowserRouter>
+  //   </>
+
+
+
+    function App() {
+        return (
+            <>
+                {/* La Navbar rimane fissa in alto in tutte le pagine */}
+                <Navbar />
+
+                <div className="main-content" style={{
+                     paddingTop: '100px', // Sposta il contenuto sotto la Navbar (che è alta 70px)
+                minHeight: '100vh',
+                paddingLeft: '20px',
+                paddingRight: '20px',
+                boxSizing: 'border-box'
+                }}>
+                    <Routes>
+                        {/* Rotta Base (Minimi) */}
+                        <Route path="/" element={<HomePage />} />
+
+                        {/* Rotta con parametro dinamico (Avanzati) */}
+                        <Route path="/news/:title" element={<DetailPage />} />
+
+                        {/* Rotta per la chiamata POST (Obbligatoria) */}
+                        {<Route path="/login" element={<LoginPage />} />}
+
+                        {/* Rotta Catch-all per pagina 404 (Avanzati) */}
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                </div>
+            </>
+        );
+    }
 
 export default App

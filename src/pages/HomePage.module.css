@@ -1,0 +1,112 @@
+.header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.subtitle {
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-md);
+}
+
+.searchForm {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    transition: border-color var(--transition-fast);
+}
+
+.searchInput:focus {
+    border-color: var(--color-primary);
+}
+
+.searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.searchButton:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.searchButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: var(--color-secondary);
+}
+
+.resetButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.resetButton:hover {
+    background-color: #5a6268;
+}
+
+.searchInfo {
+    margin-top: var(--spacing-sm);
+    font-style: italic;
+    color: var(--color-text);
+}
+
+.newsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.loading {
+    text-align: center;
+    padding: var(--spacing-xl);
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+
+.noResults {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .searchForm {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .searchButton,
+    .resetButton {
+        width: 100%;
+    }
+
+    .newsGrid {
+        grid-template-columns: 1fr;
+    }
+}
